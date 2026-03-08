@@ -1,6 +1,6 @@
-[gd_resource type="Resource" script_class="CombatStats" load_steps=2 format=3 uid="uid://1elbkoi4wvga"]
+[gd_resource type="Resource" script_class="AttributeData" load_steps=2 format=3 uid="uid://1elbkoi4wvga"]
 
-[ext_resource type="Script" uid="uid://cahthes1o5rpw" path="res://shared/scripts/data_models/combat_stats.gd" id="1_rv7hm"]
+[ext_resource type="Script" uid="uid://cahthes1o5rpw" path="res://shared/scripts/data_models/attribute_data.gd" id="1_rv7hm"]
 
 [resource]
 script = ExtResource("1_rv7hm")

@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 
-@export var combat_stats: CombatStats
+@export var attribute_data: AttributeData
 @export var active_skill: Skill
 
 @onready var animation_component: AnimationComponent = %AnimationComponent

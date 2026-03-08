@@ -3,7 +3,7 @@ extends CharacterBody2D
 
 
 @export var enemy_data: EnemyData
-@onready var combat_stats: CombatStats = enemy_data.combat_stats
+@onready var attribute_data: AttributeData = enemy_data.attribute_data
 @export var active_skill: Skill
 
 @onready var sprite: Sprite2D = %Sprite2D

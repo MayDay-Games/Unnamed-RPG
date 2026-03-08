@@ -11,17 +11,12 @@ signal died
 
 
 func _ready() -> void:
-	health = parent.combat_stats.max_health
+	health = parent.attribute_data.get_total_health()
 
 
-func take_damage(amount: float):
-	health = clamp(health - amount, 0.0, parent.combat_stats.max_health)
+func take_damage(mitigated, damage_data: DamageData, is_crit):
+	health -= mitigated
 	emit_signal("health_changed", health)
 
 	if health <= 0.0:
 		emit_signal("died")
-
-
-# unused
-func heal(amount: float):
-	health = clamp(health + amount, 0.0, parent.combat_stats.max_health)

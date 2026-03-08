@@ -8,5 +8,5 @@
 script = ExtResource("1_26l5q")
 name = "Green Orc"
 texture = ExtResource("2_0a1bf")
-combat_stats = ExtResource("1_t7xoc")
+attribute_data = ExtResource("1_t7xoc")
 metadata/_custom_type_script = "uid://eut4fcsnf5nn"

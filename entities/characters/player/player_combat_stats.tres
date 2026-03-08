@@ -1,8 +1,7 @@
-[gd_resource type="Resource" script_class="CombatStats" load_steps=2 format=3 uid="uid://byykxl7u0k3a7"]
+[gd_resource type="Resource" script_class="AttributeData" load_steps=2 format=3 uid="uid://byykxl7u0k3a7"]
 
-[ext_resource type="Script" uid="uid://cahthes1o5rpw" path="res://shared/scripts/data_models/combat_stats.gd" id="1_h2sck"]
+[ext_resource type="Script" uid="uid://cahthes1o5rpw" path="res://shared/scripts/data_models/attribute_data.gd" id="1_h2sck"]
 
 [resource]
 script = ExtResource("1_h2sck")
-attack_speed = 3.0
 metadata/_custom_type_script = "uid://cahthes1o5rpw"

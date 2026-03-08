@@ -35,16 +35,16 @@ func _ready() -> void:
 func set_player(p):
 	player = p
 	player_icon.texture = player.sprite.texture
-	player_health_bar.max_value = player.combat_stats.max_health
-	player_health_bar.value = player.combat_stats.max_health
+	player_health_bar.max_value = player.attribute_data.max_health
+	player_health_bar.value = player.attribute_data.max_health
 
 
 func set_enemy(e):
 	# for now only one enemy
 	enemy = e
 	enemy_icon_1.texture = enemy.enemy_data.texture
-	enemy_health_bar.max_value = enemy.combat_stats.max_health
-	enemy_health_bar.value = enemy.combat_stats.max_health
+	enemy_health_bar.max_value = enemy.attribute_data.max_health
+	enemy_health_bar.value = enemy.attribute_data.max_health
 
 
 func _on_battle_started(player_ent: BattleEntity, enemy_ent: BattleEntity) -> void:
