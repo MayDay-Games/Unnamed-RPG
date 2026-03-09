@@ -8,6 +8,8 @@ extends Control
 @onready var enemy_attack_bar: ProgressBar = %EnemyAttackBar
 @onready var player_health_bar: TextureProgressBar = %PlayerHealthBar
 @onready var enemy_health_bar: TextureProgressBar = %EnemyHealthBar
+@onready var player_damage_popup_marker: Marker2D = %PlayerDamagePopupMarker
+@onready var enemy_damage_popup_marker: Marker2D = %EnemyDamagePopupMarker
 
 # Screens
 @onready var battle_display: Control = %BattleDisplay

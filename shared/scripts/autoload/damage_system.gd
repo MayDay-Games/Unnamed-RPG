@@ -27,6 +27,9 @@ func apply_damage(damage_data: DamageData, attacker_attributes: AttributeData, d
 		target.take_damage(mitigated, damage_data, is_crit)
 	elif target.health_component and target.health_component.has_method("take_damage"):
 		target.health_component.take_damage(mitigated, damage_data, is_crit)
+	
+	if damage_data.applies_dot:
+		_apply_dot_effect(damage_data, attacker_attributes, defender_attributes, target)
 
 
 func _get_attribute_scaling(damage_data: DamageData, attributes: AttributeData) -> float:
@@ -67,3 +70,61 @@ func _apply_mitigation(damage: float, dmg_type: String, defender: AttributeData)
 			final_damage *= (1.0 - clamp(defender.freeze_resist_pct / 100.0, 0.0, 1.0))
 		
 	return max(0.0, final_damage)
+
+
+func _apply_dot_effect(damage_data: DamageData, _attacker: AttributeData, defender: AttributeData, target: BattleEntity) -> void:
+	if not is_instance_valid(target):
+		return
+	
+	var dot = {
+		"target": target,
+		"type": damage_data.dot_id,
+		"damage_type": damage_data.damage_type,
+		"remaining_time": damage_data.dot_duration,
+		"tick_interval": damage_data.dot_tick_interval,
+		"tick_damage": _apply_mitigation(damage_data.dot_tick_damage, damage_data.damage_type, defender),
+		"stacks": 1,
+		"can_stack": damage_data.dot_can_stack,
+		"max_stacks": damage_data.dot_max_stacks
+	}
+
+	# check if dot already exists
+	for existing in active_dots:
+		if existing.target == target and existing.type == damage_data.dot_id:
+			# if it exists and can stack, increase damage
+			if existing.can_stack:
+				existing.stacks = min(existing.stacks + 1, existing.max_stacks)
+				existing.tick_damage += dot.tick_damage
+			# else reset time
+			else:
+				existing.remaining_time = damage_data.dot_duration
+			return
+	
+	active_dots.append(dot)
+	active_dot_sources.append(damage_data)
+
+
+func _process(delta: float) -> void:
+	for i in range(active_dots.size() - 1, -1, -1): # iterating backwards to avoid issues with removing dots
+		var dot = active_dots[i]
+
+		if not is_instance_valid(dot.target):
+			active_dots.remove_at(i)
+			active_dot_sources.remove_at(i)
+			continue
+
+		dot.remaining_time -= delta
+		dot.tick_interval -= delta
+
+		if dot.tick_interval <= 0.0:
+			dot.tick_interval = active_dot_sources[i].dot_tick_interval
+			if dot.target.has_method("take_damage"):
+				var total_tick = dot.tick_damage * dot.stacks
+				dot.target.take_damage(total_tick, active_dot_sources[i], false)
+			elif dot.target.health_component and dot.target.health_component.has_method("take_damage"):
+				var total_tick = dot.tick_damage * dot.stacks
+				dot.target.health_component.take_damage(total_tick, active_dot_sources[i], false)
+
+		if dot.remaining_time <= 0.0:
+			active_dots.remove_at(i)
+			active_dot_sources.remove_at(i)

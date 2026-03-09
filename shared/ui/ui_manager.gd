@@ -12,6 +12,7 @@ extends Node
 func _ready() -> void:
 	SignalBus.connect("enemy_clicked", _on_enemy_clicked)
 	SignalBus.connect("battle_started", _on_battle_started)
+	DamagePopupManager.connect("damage_popup_ready", _on_damage_popup_ready)
 
 
 func _on_enemy_clicked(enemy):
@@ -27,3 +28,8 @@ func show_battle_confirmation_popup(enemy):
 func _on_battle_started(enemy):
 	battle_screen.enemy = enemy
 	battle_screen.visible = true
+
+
+func _on_damage_popup_ready(popup):
+	if battle_screen:
+		battle_screen.add_child(popup)

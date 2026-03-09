@@ -11,6 +11,8 @@ var damage_data: DamageData
 
 var attack_speed: float = 1.0 # Placeholder
 
+var global_position: Vector2 = Vector2.ZERO # Workaround for the damage popup because this is not a node2d with a global position
+
 
 func _ready() -> void:
 	health_component.connect("died", _on_death)

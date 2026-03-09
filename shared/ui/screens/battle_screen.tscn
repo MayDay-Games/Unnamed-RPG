@@ -263,5 +263,13 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 12
 text = "Continue"
 
+[node name="PlayerDamagePopupMarker" type="Marker2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(179, 182)
+
+[node name="EnemyDamagePopupMarker" type="Marker2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(461, 182)
+
 [connection signal="pressed" from="VictoryScreen/MarginContainer/VBoxContainer/ContinueButton" to="." method="_on_victory_screen_continue_button_pressed"]
 [connection signal="pressed" from="DefeatScreen/MarginContainer/VBoxContainer/ContinueButton" to="." method="_on_defeat_screen_continue_button_pressed"]

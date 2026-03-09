@@ -24,12 +24,14 @@ func start_battle(enemy):
 	player_battle_entity = battle_entity.instantiate()
 	player_battle_entity.attribute_data = get_tree().get_first_node_in_group("player").attribute_data
 	player_battle_entity.damage_data = get_tree().get_first_node_in_group("player").damage_data
+	player_battle_entity.global_position = battle_screen.player_damage_popup_marker.global_position
 	# player_battle_entity.active_skill = get_tree().get_first_node_in_group("player").active_skill
 	add_child(player_battle_entity)
 
 	enemy_battle_entity = battle_entity.instantiate()
 	enemy_battle_entity.attribute_data = enemy.attribute_data
 	enemy_battle_entity.damage_data = enemy.damage_data
+	enemy_battle_entity.global_position = battle_screen.enemy_damage_popup_marker.global_position
 	# enemy_battle_entity.active_skill = enemy.active_skill
 	add_child(enemy_battle_entity)
 

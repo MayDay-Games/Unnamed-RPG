@@ -44,6 +44,7 @@ unique_name_in_owner = true
 y_sort_enabled = true
 
 [node name="UI" type="CanvasLayer" parent="."]
+unique_name_in_owner = true
 script = ExtResource("4_tbgi4")
 
 [node name="HUD" type="Node" parent="UI"]
@@ -55,3 +56,4 @@ unique_name_in_owner = true
 
 [node name="BattleScreen" parent="UI/ScreenContainer" instance=ExtResource("8_tipki")]
 unique_name_in_owner = true
+visible = false
