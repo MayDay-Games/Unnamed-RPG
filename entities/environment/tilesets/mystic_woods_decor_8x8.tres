@@ -1,4 +1,4 @@
-[gd_resource type="TileSet" load_steps=3 format=3 uid="uid://ccgblxx6oxvgs"]
+[gd_resource type="TileSet" format=3 uid="uid://ccgblxx6oxvgs"]
 
 [ext_resource type="Texture2D" uid="uid://bd3sq66bpi0vc" path="res://entities/environment/assets/ground/decor_8x8.png" id="1_igrvn"]
 
