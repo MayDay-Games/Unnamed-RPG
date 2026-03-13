@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://djwoy1lx2jwd5"]
+[gd_scene format=3 uid="uid://djwoy1lx2jwd5"]
 
 [ext_resource type="Script" uid="uid://phpv4usybbgj" path="res://shared/scripts/global/game_manager.gd" id="1_o6xl0"]
 [ext_resource type="PackedScene" uid="uid://mu31biemy71" path="res://entities/characters/player/player.tscn" id="2_0wfyh"]
@@ -9,46 +9,47 @@
 [ext_resource type="Texture2D" uid="uid://c25gbuuk3mrin" path="res://assets/white.png" id="7_tipki"]
 [ext_resource type="PackedScene" uid="uid://bg7m8wp0tpmf1" path="res://shared/ui/windows/inventory/inventory_ui.tscn" id="8_85g3d"]
 [ext_resource type="PackedScene" uid="uid://pbulugqfsgep" path="res://shared/ui/screens/battle_screen.tscn" id="8_tipki"]
+[ext_resource type="PackedScene" uid="uid://b60rc4rdpir0a" path="res://shared/ui/popups/item_info_popup.tscn" id="9_choun"]
 
-[node name="Main" type="Node2D"]
+[node name="Main" type="Node2D" unique_id=644247194]
 y_sort_enabled = true
 
-[node name="GameManager" type="Node" parent="."]
+[node name="GameManager" type="Node" parent="." unique_id=650779976]
 script = ExtResource("1_o6xl0")
 metadata/_custom_type_script = "uid://phpv4usybbgj"
 
-[node name="UIManager" type="Node" parent="GameManager"]
+[node name="UIManager" type="Node" parent="GameManager" unique_id=1140555892]
 script = ExtResource("5_tefeu")
 metadata/_custom_type_script = "uid://butt1q8h63mk1"
 
-[node name="BattleManager" type="Node" parent="GameManager"]
+[node name="BattleManager" type="Node" parent="GameManager" unique_id=933151088]
 unique_name_in_owner = true
 script = ExtResource("2_85g3d")
 metadata/_custom_type_script = "uid://b6kuyg6t88oy6"
 
-[node name="SpawnManager" type="Node" parent="GameManager"]
+[node name="SpawnManager" type="Node" parent="GameManager" unique_id=2024911098]
 script = ExtResource("4_choun")
 metadata/_custom_type_script = "uid://cuo88opv8am4k"
 
-[node name="World" type="Node2D" parent="."]
+[node name="World" type="Node2D" parent="." unique_id=67132067]
 unique_name_in_owner = true
 y_sort_enabled = true
 
-[node name="MysticWoodsLevel" parent="World" instance=ExtResource("3_jyhfs")]
+[node name="MysticWoodsLevel" parent="World" unique_id=1885299913 instance=ExtResource("3_jyhfs")]
 
-[node name="Player" parent="World" instance=ExtResource("2_0wfyh")]
+[node name="Player" parent="World" unique_id=402647186 instance=ExtResource("2_0wfyh")]
 position = Vector2(284, 149)
 
-[node name="EnemyContainer" type="Node2D" parent="World"]
+[node name="EnemyContainer" type="Node2D" parent="World" unique_id=672803591]
 unique_name_in_owner = true
 y_sort_enabled = true
 
-[node name="UI" type="CanvasLayer" parent="."]
+[node name="UI" type="CanvasLayer" parent="." unique_id=1317891836]
 unique_name_in_owner = true
 
-[node name="HUD" type="Node" parent="UI"]
+[node name="HUD" type="Node" parent="UI" unique_id=492605435]
 
-[node name="LevelUI" type="Control" parent="UI/HUD"]
+[node name="LevelUI" type="Control" parent="UI/HUD" unique_id=1578442086]
 custom_minimum_size = Vector2(0, 20)
 layout_mode = 3
 anchors_preset = 12
@@ -60,7 +61,7 @@ grow_vertical = 0
 size_flags_horizontal = 3
 size_flags_vertical = 8
 
-[node name="MarginContainer" type="MarginContainer" parent="UI/HUD/LevelUI"]
+[node name="MarginContainer" type="MarginContainer" parent="UI/HUD/LevelUI" unique_id=1371403082]
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
@@ -72,17 +73,17 @@ grow_vertical = 0
 theme_override_constants/margin_left = 40
 theme_override_constants/margin_right = 40
 
-[node name="HBoxContainer" type="HBoxContainer" parent="UI/HUD/LevelUI/MarginContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/HUD/LevelUI/MarginContainer" unique_id=1778996306]
 layout_mode = 2
 theme_override_constants/separation = 16
 alignment = 1
 
-[node name="LevelLabel" type="Label" parent="UI/HUD/LevelUI/MarginContainer/HBoxContainer"]
+[node name="LevelLabel" type="Label" parent="UI/HUD/LevelUI/MarginContainer/HBoxContainer" unique_id=2121458588]
 unique_name_in_owner = true
 layout_mode = 2
 text = "1"
 
-[node name="XPBar" type="TextureProgressBar" parent="UI/HUD/LevelUI/MarginContainer/HBoxContainer"]
+[node name="XPBar" type="TextureProgressBar" parent="UI/HUD/LevelUI/MarginContainer/HBoxContainer" unique_id=436897452]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(120, 4)
 layout_mode = 2
@@ -95,15 +96,20 @@ texture_progress = ExtResource("7_tipki")
 tint_under = Color(0.26, 0.26, 0.26, 0.45490196)
 tint_progress = Color(0.16940002, 0.33957, 0.77, 1)
 
-[node name="InventoryUI" parent="UI/HUD" instance=ExtResource("8_85g3d")]
+[node name="InventoryUI" parent="UI/HUD" unique_id=777269918 instance=ExtResource("8_85g3d")]
 unique_name_in_owner = true
 visible = false
 
-[node name="PopupContainer" type="Node" parent="UI"]
+[node name="PopupContainer" type="Node" parent="UI" unique_id=1972386460]
 unique_name_in_owner = true
 
-[node name="ScreenContainer" type="Node" parent="UI"]
+[node name="ItemInfoPopup" parent="UI/PopupContainer" unique_id=290448782 instance=ExtResource("9_choun")]
+unique_name_in_owner = true
+visible = false
+mouse_filter = 1
 
-[node name="BattleScreen" parent="UI/ScreenContainer" instance=ExtResource("8_tipki")]
+[node name="ScreenContainer" type="Node" parent="UI" unique_id=736169776]
+
+[node name="BattleScreen" parent="UI/ScreenContainer" unique_id=81351132 instance=ExtResource("8_tipki")]
 unique_name_in_owner = true
 visible = false
