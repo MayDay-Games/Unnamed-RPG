@@ -5,6 +5,7 @@ extends Node
 @onready var popup_container: Node = %PopupContainer
 @onready var battle_screen: Control = %BattleScreen
 @onready var inventory_ui: Control = %InventoryUI
+@onready var character_screen_ui: Control = %CharacterScreenUI
 
 # LevelUI
 @onready var xp_bar: TextureProgressBar = %XPBar
@@ -14,7 +15,7 @@ extends Node
 @onready var item_info_popup: PackedScene = preload("uid://b60rc4rdpir0a")
 @onready var item_info_pop = %ItemInfoPopup
 
-var item_focused = null :set = new_focus
+var item_focused = null: set = new_focus
 
 func _ready() -> void:
 	# Battle Signals
@@ -33,6 +34,9 @@ func _ready() -> void:
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("inventory"):
 		inventory_ui.visible = !inventory_ui.visible
+
+	if event.is_action_pressed("character_screen"):
+		character_screen_ui.visible = !character_screen_ui.visible
 
 
 ### Handling Combat
@@ -76,8 +80,7 @@ func _on_inventory_slot_mouse_entered(slot):
 		#active_item_info_popup = popup
 		#popup_container.add_child(popup)
 	if item_focused != slot:
-		item_focused = slot	
-
+		item_focused = slot
 
 
 func _on_inventory_slot_mouse_exited(slot):
@@ -91,4 +94,4 @@ func new_focus(new):
 	if item_focused and !item_info_pop.visible:
 		item_info_pop.visible = true
 	else:
-		item_info_pop.visible = false		
+		item_info_pop.visible = false

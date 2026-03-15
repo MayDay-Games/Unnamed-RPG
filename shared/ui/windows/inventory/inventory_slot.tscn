@@ -1,16 +1,30 @@
 [gd_scene format=3 uid="uid://dcmgm128i2mnr"]
 
 [ext_resource type="Script" uid="uid://dupjb1ri4op8c" path="res://shared/ui/windows/inventory/inventory_slot.gd" id="1_a3w5j"]
+[ext_resource type="Texture2D" uid="uid://bqybdrblikdk" path="res://assets/inventory_slot.png" id="2_a3w5j"]
 
-[node name="InventorySlot" type="PanelContainer" unique_id=1258193749]
-custom_minimum_size = Vector2(24, 24)
-offset_right = 16.0
-offset_bottom = 16.0
-size_flags_horizontal = 6
-size_flags_vertical = 6
+[node name="InventorySlot" type="Control" unique_id=1860370782]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 22.0
+offset_bottom = 22.0
 script = ExtResource("1_a3w5j")
 
-[node name="ItemIconDisplay" type="TextureRect" parent="." unique_id=1460486580]
+[node name="Background" type="TextureRect" parent="." unique_id=39581800]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_a3w5j")
+
+[node name="Highlight" type="ColorRect" parent="." unique_id=434712585]
 unique_name_in_owner = true
-layout_mode = 2
-stretch_mode = 3
+visible = false
+layout_mode = 0
+offset_left = 2.0
+offset_top = 2.0
+offset_right = 18.0
+offset_bottom = 18.0
+color = Color(0.67, 0.67, 0.67, 0.34901962)

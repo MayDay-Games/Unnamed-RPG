@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://da8gr86yg5u2c"]
+
+[ext_resource type="Texture2D" uid="uid://bjrj12ybtanw1" path="res://assets/blue_helmet.png" id="1_cnjw1"]
+[ext_resource type="Script" uid="uid://bhulkw7ubbvnu" path="res://entities/items/item_data.gd" id="1_kooia"]
+
+[resource]
+script = ExtResource("1_kooia")
+name = "Leather Helmet"
+type = 3
+icon = ExtResource("1_cnjw1")
+metadata/_custom_type_script = "uid://bhulkw7ubbvnu"

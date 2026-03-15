@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://4t8yg3frui80"]
+
+[ext_resource type="Script" uid="uid://ckuqamuti4yj6" path="res://shared/ui/item_ui.gd" id="1_kfu1v"]
+
+[node name="ItemUI" type="Control" unique_id=381047854]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 22.0
+offset_bottom = 22.0
+script = ExtResource("1_kfu1v")
+
+[node name="Icon" type="TextureRect" parent="." unique_id=1764452406]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 3.0
+offset_top = 3.0
+offset_right = -3.0
+offset_bottom = -3.0
+grow_horizontal = 2
+grow_vertical = 2
+stretch_mode = 5
